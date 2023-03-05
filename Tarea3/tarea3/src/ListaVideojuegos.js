@@ -4,6 +4,8 @@ import tlou from "./imagenes/tlou.jfif"
 import tloz from "./imagenes/tloz.jpg"
 import h3ODST from "./imagenes/odst.jfif" 
 
+import './stylesheets/ListaVideojuegos.css'
+
 //arreglo que contiene objetos de videojuego para que sea más fácil acceder a ellos
 const arregloDeVideojuegos = [{nombre: "The Last Of us",
 desarrollador: "Naughty Dog",
@@ -25,17 +27,17 @@ imagen: h3ODST
 const ListaVideojuegos = () => {
     return(
     <Fragment>
-        <p>{arregloDeVideojuegos[0]["nombre"]}</p>
+        <p className = "LastOfUs">{arregloDeVideojuegos[0]["nombre"]}</p>
         <p>{arregloDeVideojuegos[0]["desarrollador"]}</p>
         <p>{arregloDeVideojuegos[0]["fechaLanzamiento"]}</p>
         <img src = {arregloDeVideojuegos[0]["imagen"]}></img>
 
-        <p>{arregloDeVideojuegos[1]["nombre"]}</p>
+        <p className = "Zelda">{arregloDeVideojuegos[1]["nombre"]}</p>
         <p>{arregloDeVideojuegos[1]["desarrollador"]}</p>
         <p>{arregloDeVideojuegos[1]["fechaLanzamiento"]}</p>
         <img src = {arregloDeVideojuegos[1]["imagen"]}></img>
         
-        <p>{arregloDeVideojuegos[2]["nombre"]}</p>
+        <p className = "Halo3">{arregloDeVideojuegos[2]["nombre"]}</p>
         <p>{arregloDeVideojuegos[2]["desarrollador"]}</p>
         <p>{arregloDeVideojuegos[2]["fechaLanzamiento"]}</p>
         <img src = {arregloDeVideojuegos[2]["imagen"]}></img>
