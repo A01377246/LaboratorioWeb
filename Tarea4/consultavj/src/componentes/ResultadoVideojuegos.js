@@ -44,8 +44,8 @@ utilizando la variable infoJuegos que obtuvimos en la desestructuración del hoo
             <ol className="list-group">
                 {
                     //Desestructuramos el objeto para obtener el id y el nombre del juego.
-                    infoJuegos.map(({ id, nombre }) => (
-                        <li key={id} className="list-group-item">{nombre}</li>
+                    infoJuegos.map(({ id, nombre, imagen, rating, metacritic }) => (
+                        <li key={id} className="list-group-item">{nombre}, {imagen}, {rating}, {metacritic}</li>
                     ))
                 }
             </ol>
