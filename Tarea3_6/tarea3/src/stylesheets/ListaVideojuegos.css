@@ -1,0 +1,55 @@
+
+@font-face {
+    font-family: AC-Compacta;
+    src: url(../fonts/AC-Compacta.ttf);
+}
+
+@font-face {
+    font-family: Halo3;
+    src: url(../fonts/halo3.regular.ttf);
+}
+
+@font-face {
+    font-family: Ravenna;
+    src: url(../fonts/Ravenna.ttf);
+}
+
+
+.gameImage{
+    
+    width: 50%;
+
+}
+
+.gameImagePlaceholder{
+    text-align: center;
+}
+
+.gameDescription{
+    text-align: center;
+    font-size: 20px;
+}
+
+#LastOfUs{
+    font-family: AC-Compacta;
+    font-size: 50px;
+    text-align: center;
+}
+
+
+#Zelda{
+
+    font-family: Ravenna;
+    font-size: 50px;
+    text-align: center;
+
+
+}
+
+
+#Halo{
+    font-family: Halo3;
+    font-size: 50px;
+    text-align: center;
+
+}
