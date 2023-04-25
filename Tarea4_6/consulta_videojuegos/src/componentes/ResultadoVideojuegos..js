@@ -9,17 +9,18 @@ export const ResultadoVideojuegos = ({ genero }) => {
     //Invocamos el api de RAWG para obtener los videojuegos del género proporcionado en los parámetros del
     // componente.
 
-    const loadingImageRoute = "../imagenes/loadingGears.gif"
-
+    //Llamar al custom hook use fetch para invocar la página de rawg
     const {loading, info} = useFetch(`https://api.rawg.io/api/games?key=2c08944555fe4d9cbbdbf5aa124a5e4d&genres=${genero}`) 
 
     console.log(loading)
+
+    //destructurar la información si la información no es nula y existe
     
-    const {results} = !!info && info;
+    const {results} = !!info && info; 
 
-    console.log(results)
+    
 
-    let juegos; 
+    let juegos;  //variable donde se guardará el resultado de mapear cada juego
 
    
     /*useEffect(() => {

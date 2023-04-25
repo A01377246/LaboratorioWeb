@@ -7,10 +7,11 @@ export const useFetch = (url) => {
         loading: true,
         error: null
     }*/
-    
+     
+    //Keeping track of the videogameState 
     const [videoGamestate, setVideogameState] = useState({
         info: null, 
-        loading: true, 
+        loading: true, //default, start loading
         error: null
     });
 
