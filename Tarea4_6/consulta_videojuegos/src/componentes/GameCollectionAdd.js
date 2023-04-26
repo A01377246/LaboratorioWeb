@@ -4,12 +4,12 @@ import { useFetch } from "../hooks/useFetch"
 export const GameCollectionAdd = ({setGames}) =>{
 
     
-    const [gameToAddID, setGameToAddID] = useState('Enter game to add')
+    const [gameToAddID, setGameToAddID] = useState('Enter game ID to add')
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(`Game has been submitted!`)
-        if(gameToAddID.trim().length > 4){
+        if(gameToAddID.trim().length > 0){
         setGames(currentIDs=> [gameToAddID, ...currentIDs] );
         //Limpiamos input value
         setGameToAddID('');
@@ -28,7 +28,8 @@ export const GameCollectionAdd = ({setGames}) =>{
                     <input
                     type = "text"
                     value = {gameToAddID}
-                    onChange = {handleGameToAddIDChange}>
+                    onChange = {handleGameToAddIDChange}
+                    className="form-control">
                     </input>
                     <input
                     type = "submit"

@@ -32,7 +32,7 @@ export const useFetch = (url) => {
                 loading: false, 
                 error: null
             });
-        });
+        console.log("Hello from use fetch, the info: ", info)});
 
         return () => {
             /*
