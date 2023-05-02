@@ -1,4 +1,3 @@
-import { GameResult } from "./GameResult"
 import React from "react"
 import { GameCollectionItem } from "./GameCollectionItem"
 

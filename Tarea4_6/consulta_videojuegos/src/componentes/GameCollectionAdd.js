@@ -1,15 +1,13 @@
 import React, { useState } from "react"
-import { useFetch } from "../hooks/useFetch"
 
 export const GameCollectionAdd = ({setGames}) =>{
 
-    
     const [gameToAddID, setGameToAddID] = useState('Enter game ID to add')
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(`Game has been submitted!`)
-        if(gameToAddID.trim().length > 0){
+        if(gameToAddID.trim() !== 0){
         setGames(currentIDs=> [gameToAddID, ...currentIDs] );
         //Limpiamos input value
         setGameToAddID('');

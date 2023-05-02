@@ -1,10 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import { VideojuegosApp } from './VideojuegosApp';
-import { GameCollectionAdd } from './componentes/GameCollectionAdd';
-import { GameCollectionApp } from './componentes/GameCollectionApp';
+import { SPAGameApp } from './SPAGameApp';
 //import { TestHook } from './componentes/testHook';
 const container = document.getElementById('root');
 const root = createRoot(container);
-root.render(<GameCollectionApp/>);
+root.render(<SPAGameApp/>);

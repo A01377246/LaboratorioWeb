@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React from 'react';
 import { InfoVideojuegos } from './InfoVideojuegos';
 import { useFetch } from '../hooks/useFetch';
 import loadingImage from "../images/loadingGears.gif"

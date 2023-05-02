@@ -1,23 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useFetch } from '../hooks/useFetch';
 import loadingImage from "../images/loadingGears.gif"
 import { GameCollectionItem } from './GameCollectionItem';
-import { GameCollection } from './GameCollection';
 
-export const GameResult = ({gameID}) =>{
+export const GameResult = ({gameID, setGames}) =>{
 
 
-    const [game, setGameObjectList] = useState([])
-
+    console.log("The game ID", gameID)
     const {loading, info} = useFetch(`https://api.rawg.io/api/games/${gameID}?key=2c08944555fe4d9cbbdbf5aa124a5e4d`)
     console.log("Loading? ", loading)
 
-    
-    
-
-    console.log("the game state:", game)
-    
-
+    let game = {}
 
     if(!!info && info){
         game.id = info.id 
@@ -25,6 +18,8 @@ export const GameResult = ({gameID}) =>{
         game.image = info.background_image 
         game.rating = info.rating
         game.metacritic = info.metacritic
+
+        localStorage.setItem(game.id, JSON.stringify(game))
 
 
         return (
@@ -36,9 +31,7 @@ export const GameResult = ({gameID}) =>{
                 (<img src = {loadingImage} alt = "loading thingy" style = {{scale:"50%", alignSelf: 'center'}}></img>
                 )
                 :
-                
-                <GameCollectionItem key = {game["id"]} Game={game}></GameCollectionItem>
-               
+                <GameCollectionItem Game={game} setGames = {setGames} gameID = {gameID}></GameCollectionItem>
             }
              </div>
             </>)
