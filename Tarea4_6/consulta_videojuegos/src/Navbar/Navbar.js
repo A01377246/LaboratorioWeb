@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import {Link, NavLink } from "react-router-dom";
+import { UserContext } from "../hooks/UserContext";
+
 
 export const Navbar = () =>{
+    const {username} = useContext(UserContext); //Recover the user from the context created on SPAGameApp
     return (
         <nav className = "navbar navbar-expand-sm navbar-dark bg-dark">
             <Link className = "navbar-brand"
@@ -27,9 +30,20 @@ export const Navbar = () =>{
             >
             Browse By Genre
             </NavLink>
+            <NavLink
+            className={({ isActive }) => isActive ? "active" : "nav-item nav-link"}
+            exact="true"
+            to="/BrowseByName"
+            >
+            Browse By Name
+            </NavLink>
+
+
         
             </div>
             </div>
+
+            <div style={{color: "#ffd700", marginLeft:"700px"}} >{username}</div>
 
 
            

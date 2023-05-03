@@ -6,18 +6,18 @@ import { VideojuegosApp } from '../../VideojuegosApp';
 
 export const GamesRouter = () => {
     return (
-    <>
-    <Navbar />
-    <div>
-    <Routes>
-    <Route exact path="/BrowseByGenre" element={<VideojuegosApp/>} />
-    <Route exact path="/GameCollectionApp" element={<GameCollectionApp/>} />
-    <Route
-    path="*"
-    element={<Navigate to="/GameCollectionApp" replace />}
-    />
-    </Routes>
-    </div>
-    </>
+        <>
+            <Navbar />
+            <div>
+                <Routes>
+                    <Route exact path="/BrowseByGenre" element={<VideojuegosApp />} />
+                    <Route exact path="/GameCollectionApp" element={<GameCollectionApp />} />
+                    <Route
+                        path="*"
+                        element={<Navigate to="/GameCollectionApp" replace />}
+                    />
+                </Routes>
+            </div>
+        </>
     )
 }
