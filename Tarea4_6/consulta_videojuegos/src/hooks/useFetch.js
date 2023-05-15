@@ -1,12 +1,6 @@
 import {useState, useEffect} from "react"; 
 
 export const useFetch = (url) => {
-
-    /*let dataObject = {
-        info: null, 
-        loading: true,
-        error: null
-    }*/
      
     //Keeping track of the videogameState 
     const [videoGamestate, setVideogameState] = useState({
@@ -23,10 +17,6 @@ export const useFetch = (url) => {
 
         })
         .then((info) =>{
-            /*videoGamestate.info = info
-            videoGamestate.loading = false 
-            videoGamestate.error = null 
-            */
             setVideogameState({
                 info,
                 loading: false, 

@@ -21,7 +21,7 @@ export const Navbar = () =>{
             exact="true"
             to="/GameCollectionApp"
             >
-            My Collection
+            Add to my Collection
             </NavLink>
             <NavLink
             className={({ isActive }) => isActive ? "active" : "nav-item nav-link"}
@@ -33,9 +33,9 @@ export const Navbar = () =>{
             <NavLink
             className={({ isActive }) => isActive ? "active" : "nav-item nav-link"}
             exact="true"
-            to="/BrowseByName"
+            to="/BrowseMyCollection"
             >
-            Browse By Name
+            Browse My Collection
             </NavLink>
 
 
@@ -43,7 +43,7 @@ export const Navbar = () =>{
             </div>
             </div>
 
-            <div style={{color: "#ffd700", marginLeft:"700px"}} >{username}</div>
+            <div style={{color: "#ffd700", marginLeft:"850px"}} >{username}</div>
 
 
            

@@ -13,8 +13,7 @@ export const VideojuegosApp = () => {
             <div className="jumbotron jumbotron-fluid">
                 <div className="container">
                     <h1 className="display-4">Gamebook</h1>
-                    <p className="lead">¡Bienvenido a la página donde podrás consultar información de
-                        videojuegos!</p>
+                    <p className="lead">Welcome, feel free to make queries about your favorite games!</p>
                 </div>
             </div>
 

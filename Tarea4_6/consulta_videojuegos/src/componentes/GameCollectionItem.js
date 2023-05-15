@@ -1,16 +1,17 @@
 import { Fragment } from "react"
 
-export const GameCollectionItem = ({Game: {name, image, rating, metacritic}, setGames, gameID}) => { 
+
+export const GameCollectionItem = ({Game: {name, image, rating, metacritic}, gameID, handleDeleteGame}) => { 
 
 
     const handleDelete = (e) =>{
-        setGames(current => current.filter(game => game !== gameID))
+        handleDeleteGame(gameID)
         console.log("Remove clicked, key:", gameID)
     }
 
+    
     return (       
         <Fragment>
-                    
                   <div className = "card " style = {{width: "18rem"}}>
                     <img  className = "card-img-top" src = {image} alt = {name}></img>
                         <div className = "card-body">

@@ -5,8 +5,6 @@ import { GamesRouter } from "./GamesRouter";
 
     // A use stake hook is not necessary because we are not changing the value contained by the user or password variable
 
-  
-
 export const MainAppRouter = () =>{
     return(
         <Router>

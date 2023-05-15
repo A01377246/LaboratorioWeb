@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export const AgregaGenero = ({setGeneros}) => {
     //En la variable inputValue siempre vamos a tener el último valor que el usuario escribió en
     // el input text.
-    const [inputValue, setInputValue] = useState('Indica el Género');
+    const [inputValue, setInputValue] = useState('Enter genre');
     //Esta función se invoca cada vez que se detecta el evento onChange en el input text.
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
