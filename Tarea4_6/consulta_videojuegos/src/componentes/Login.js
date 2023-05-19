@@ -6,7 +6,7 @@ export const LoginScreen = () => {
 
     const {username, password} = useContext(UserContext)
 
-    console.log("Username:", username, typeof(username), "password", password, typeof(password))
+    //console.log("Username:", username, typeof(username), "password", password, typeof(password))
 
     const [enteredUsername, setEnteredUsername] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');

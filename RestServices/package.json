@@ -1,0 +1,15 @@
+{
+  "name": "restservices",
+  "version": "1.0.0",
+  "description": "My first REST web service, oh yeah!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Humberto Carrillo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security"
+  }
+}

@@ -8,7 +8,7 @@ import { getGamesBySearch } from "../selectors/getGamesBySearch"
 
 let collection = JSON.parse(localStorage.getItem("Videogames"))
 
-console.log("col", collection)
+//console.log("col", collection)
 
 export const SearchCollection = () => {
 
