@@ -5,6 +5,7 @@ import { UserContext } from "../hooks/UserContext";
 
 export const Navbar = () =>{
     const {username} = useContext(UserContext); //Recover the user from the context created on SPAGameApp
+
     return (
         <nav className = "navbar navbar-expand-sm navbar-dark bg-dark">
             <Link className = "navbar-brand"
@@ -52,7 +53,7 @@ export const Navbar = () =>{
                     <NavLink
                     className={({isActive}) => isActive ? "active": "nav-item nav-link"}
                     exact = "true"
-                    to = "/login"
+                    to = "/"
                     >Logout
                     </NavLink>
                 </ul>

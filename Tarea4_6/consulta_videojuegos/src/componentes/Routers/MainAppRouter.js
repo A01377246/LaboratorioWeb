@@ -10,7 +10,7 @@ export const MainAppRouter = () =>{
         <Router>
             <div>
                 <Routes>
-                    <Route exact path="/login" element={<LoginScreen/>} />
+                    <Route exact path="/" element={<LoginScreen/>} />
                     <Route
                     path="*"
                     element={<GamesRouter/>}

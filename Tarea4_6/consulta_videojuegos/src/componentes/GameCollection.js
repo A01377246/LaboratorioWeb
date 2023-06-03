@@ -2,16 +2,21 @@ import React from "react"
 import { GameCollectionItem } from "./GameCollectionItem"
 
 
-export const GameCollection = (game) =>{
+export const GameCollection = ({gameCollection}) =>{
 
-return(
-    <div className = "d-flex flex-row">
-    {
-       <GameCollectionItem key = {game["id"]} Game={game}></GameCollectionItem>
-    }
-    </div>
-)
+    console.log(`poptart!${JSON.stringify(gameCollection)} len: ${gameCollection.length}`)
 
+     return(
+            <div className = "d-flex flex-row">
+            {
+                gameCollection.map(game => {
+                    <GameCollectionItem key = {game["id"]} Game={game}></GameCollectionItem>
+                    console.log(`sending ${game}`)
+            })
+            }
+            </div>
+        )
+    
 }
 
 

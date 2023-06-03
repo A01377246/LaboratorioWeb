@@ -2,22 +2,44 @@ import React, { useEffect, useReducer} from 'react';
 import { videogameReducer } from '../hooks/videogameReducer';
 import { GameResult } from './GameResult';
 import {useForm} from '../hooks/useForm';
-import { GameCollectionItem } from './GameCollectionItem';
-
-const init = () => {return JSON.parse(localStorage.getItem("Videogames")) || [];}
+import { UserContext } from '../hooks/UserContext';
+import { useContext } from 'react';
+import { GameCollection } from './GameCollection';
 
 export const GameCollectionApp = () => {
 
-    //localStorage.clear("Videogames")
+    const [videogameState, dispatch] = useReducer(videogameReducer, [])
 
-    const [videogameState, dispatch] = useReducer(videogameReducer, [], init)
-
-    const [{gameID}, handleInputChange, reset] = useForm({})
+    const loggedUsername =  useContext(UserContext).username
+    console.log(`welcome ${loggedUsername}`)
+    
+    const initCollection = async() =>{
+        let response = await fetch(`http://localhost:8585/games/getCollectionByUsername/${loggedUsername}`) 
+        let {collection} = await response.json();
+        dispatch({
+            type: 'initializeCollection', 
+            payload: collection
+        })
+        
+    }
 
     useEffect(() => {
-        localStorage.setItem('Videogames', JSON.stringify(videogameState))
-    }, [videogameState])
+        initCollection()
+    }, [])
 
+   
+    const [{gameID}, handleInputChange, reset] = useForm({})
+
+    const registerOnLog = async() => {
+        
+        let options = {
+            method: "POST",
+            headers: {"Content-Type": "application/json;charset=utf-8"},
+            url: 'http://localhost:8585/games/AddLogEvent',
+            body: JSON.stringify({username: loggedUsername, event: `${loggedUsername} Added a game. ID: ${gameID}`})
+        }
+        await fetch('http://localhost:8585/games/AddLogEvent', options)
+    }
 
     const handleAddGame = (e) => {
         e.preventDefault()
@@ -25,23 +47,11 @@ export const GameCollectionApp = () => {
         if(gameID.trim().length === 0){
             return
         }
-        const game = {
-            id: gameID
-        }
-        const action = {
-            type: 'add',
-            payload: game
-        }
-        dispatch(action);
+
+        registerOnLog();
         reset();
     }
 
-    const addGame = (game) =>{
-        const action = {
-            type: 'add', 
-            payload: game
-        }
-    }
 
     const handleDeleteGame = (gameID) => {
         const action = {
@@ -51,8 +61,7 @@ export const GameCollectionApp = () => {
         dispatch(action)
     }
 
-    return(
-        
+    return(        
         <>
             <div className="jumbotron jumbotron-fluid">
                             <div className="container">
@@ -70,16 +79,10 @@ export const GameCollectionApp = () => {
 
             <ol className="list-group list-group-numbered">
             <div className = "d-flex flex-row">
-                {
-                    videogameState.map(game => {
-                        return <GameResult
-                            key={game.id}
-                            gameID={game.id}
-                            handleDeleteGame = {handleDeleteGame}
-                            addGame = {addGame}
-                        />
-                    })
-                }
+
+                        <GameCollection gameCollection = {videogameState}></GameCollection>
+                        <GameResult gameID = {gameID} handleDeleteGame={handleDeleteGame} dispatch = {dispatch}></GameResult>
+            
              </div>
             </ol>
         </>

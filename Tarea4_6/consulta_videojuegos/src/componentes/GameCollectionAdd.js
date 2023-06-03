@@ -15,7 +15,6 @@ export const GameCollectionAdd = ({setGameArray, handleAddGame}) =>{
         if(gameToAddID.trim() != 0  && gameToAddID.match(/^[0-9]+$/) != null){
 
             setGameArray(previousGames => [game, ...previousGames])
-            console.log("I will send", game)
             handleAddGame(game)
 
         //Limpiamos input value
