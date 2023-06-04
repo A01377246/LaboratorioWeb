@@ -5,7 +5,7 @@ import { GameCollectionItem } from './GameCollectionItem';
 import { useContext } from 'react';
 import { UserContext } from '../hooks/UserContext';
 
-export const GameResult = ({gameID, handleDeleteGame, dispatch}) =>{
+export const GameResult = ({gameID, handleDeleteGame, dispatch, searchState, setSearchState}) =>{
 
    
 
@@ -16,17 +16,20 @@ export const GameResult = ({gameID, handleDeleteGame, dispatch}) =>{
         let options = {
             method: "POST",
             headers: {"Content-Type": "application/json;charset=utf-8"},
-            url: 'http://localhost:8585/games/AddLogEvent',
+            url: 'http://localhost:8585/games/addGameToUserCollection',
             body: JSON.stringify({providedUsername: loggedUsername, game: `${game}`})
         }
         await fetch('http://localhost:8585/games/addGameToUserCollection', options)
         return 
 
     }
+    
 
     let game = {}
+    
 
     const {loading, info} = useFetch(`https://api.rawg.io/api/games/${gameID}?key=2c08944555fe4d9cbbdbf5aa124a5e4d`)
+
 
     if(!!info && info){
         game.id = info.id 
@@ -34,23 +37,29 @@ export const GameResult = ({gameID, handleDeleteGame, dispatch}) =>{
         game.image = info.background_image 
         game.rating = info.rating
         game.metacritic = info.metacritic
-
         console.log(`I found a ${JSON.stringify(game)}`)
     }
 
 
     useEffect(() => {
-        
-    let action ={
-        type: "add", 
-        payload: game
-    }
 
-    dispatch(action)
-    addGameToUserCollection(game, loggedUsername)
+        if(Object.keys(game).length > 0){
+            let action ={
+                type: "add", 
+                payload: game
+                }
 
-    
-    }, [gameID])
+                console.log(`WILL INSERT ${game}`)
+
+                dispatch(action)
+                addGameToUserCollection(game, loggedUsername)
+                setSearchState(false)
+        }else{
+            console.log("Won't insert shit")
+        }
+     
+       
+    }, [searchState, dispatch, setSearchState])
 
    
 

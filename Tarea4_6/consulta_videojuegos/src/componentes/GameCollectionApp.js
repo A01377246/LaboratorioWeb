@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer} from 'react';
+import React, { useEffect, useReducer, useState} from 'react';
 import { videogameReducer } from '../hooks/videogameReducer';
 import { GameResult } from './GameResult';
 import {useForm} from '../hooks/useForm';
@@ -10,9 +10,14 @@ export const GameCollectionApp = () => {
 
     const [videogameState, dispatch] = useReducer(videogameReducer, [])
 
+    const [searchState, setSearchState] = useState("false")
+
     const loggedUsername =  useContext(UserContext).username
     console.log(`welcome ${loggedUsername}`)
-    
+ 
+
+    useEffect(() => {
+           
     const initCollection = async() =>{
         let response = await fetch(`http://localhost:8585/games/getCollectionByUsername/${loggedUsername}`) 
         let {collection} = await response.json();
@@ -22,10 +27,8 @@ export const GameCollectionApp = () => {
         })
         
     }
-
-    useEffect(() => {
         initCollection()
-    }, [])
+    }, [loggedUsername])
 
    
     const [{gameID}, handleInputChange, reset] = useForm({})
@@ -47,7 +50,7 @@ export const GameCollectionApp = () => {
         if(gameID.trim().length === 0){
             return
         }
-
+        setSearchState(true)
         registerOnLog();
         reset();
     }
@@ -78,13 +81,15 @@ export const GameCollectionApp = () => {
             </form>
 
             <ol className="list-group list-group-numbered">
-            <div className = "d-flex flex-row">
 
-                        <GameCollection gameCollection = {videogameState}></GameCollection>
-                        <GameResult gameID = {gameID} handleDeleteGame={handleDeleteGame} dispatch = {dispatch}></GameResult>
-            
+     
+            <div className = "d-flex flex-row">
+                        <GameCollection gameCollection={videogameState}></GameCollection>
+                        <GameResult gameID = {gameID} handleDeleteGame={handleDeleteGame} dispatch = {dispatch} searchState={searchState} setSearchState = {setSearchState}></GameResult>
+                        
              </div>
             </ol>
+                
         </>
     )
 

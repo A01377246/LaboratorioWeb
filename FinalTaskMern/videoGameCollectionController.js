@@ -99,7 +99,7 @@ exports.addGameToUserCollection = async function (req, res){
 
   //const gameObject = JSON.parse(req.body)
 
-  console.log(`${providedUsername} wants to insert ${game}`)
+  console.log(`${providedUsername} wants to insert ${JSON.stringify(game)}`)
 
   const result = await userCollection.updateOne({username: providedUsername}, {$push: {"collection":game}})
 
