@@ -38,6 +38,14 @@ export const Navbar = () =>{
             >
             Browse My Collection
             </NavLink>
+            <NavLink
+            className={({ isActive }) => isActive ? "active" : "nav-item nav-link"}
+            exact="true"
+            to="/LogRegistry"
+            >
+            Log Registry
+            </NavLink>
+            
 
 
         

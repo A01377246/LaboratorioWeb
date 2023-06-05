@@ -32,7 +32,7 @@ export const GameCollection = ({searchCriterion, searchState}) =>{
             if(game){
                 setGameCollection(game)
             }else{
-                alert('wtf is that mate')
+
             }
           
             return

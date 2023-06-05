@@ -4,6 +4,7 @@ import { Navbar } from '../../Navbar/Navbar';
 import { GameCollectionApp } from '../GameCollectionApp';
 import { SearchCollection } from '../SearchCollection';
 import { VideojuegosApp } from '../../VideojuegosApp';
+import {LogRegistry} from '../LogRegistry'
 
 export const GamesRouter = () => {
     return (
@@ -14,6 +15,7 @@ export const GamesRouter = () => {
                     <Route exact path="/BrowseByGenre" element={<VideojuegosApp />} />
                     <Route exact path="/GameCollectionApp" element={<GameCollectionApp />} />
                     <Route exact path = "/BrowseMyCollection" element = {<SearchCollection/>}/>
+                    <Route exact path = "/LogRegistry" element = {<LogRegistry/>}/>
                     <Route
                         path="*"
                         element={<Navigate to="/GameCollectionApp" replace />}

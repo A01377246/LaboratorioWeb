@@ -56,7 +56,7 @@ export const GameResult = ({gameID, handleDeleteGame, dispatch, searchState, set
                 addGameToUserCollection(game, loggedUsername)
                 setSearchState(false)
         }else{
-            console.log("Won't insert shit")
+            console.log("Won't insert empty stuff")
         }
      
        
