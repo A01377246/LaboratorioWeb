@@ -1,36 +1,29 @@
-import React, { useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
 import queryString from 'query-string'
-import { GameResult } from './GameResult'
 import { useForm } from '../hooks/useForm'
-import { getGamesBySearch } from "../selectors/getGamesBySearch"
+import { GameCollection } from './GameCollection'
+import { useState } from 'react'
 
-let collection = JSON.parse(localStorage.getItem("Videogames"))
 
-//console.log("col", collection)
 
 export const SearchCollection = () => {
+
+    const [searchState, setSearchState] = useState(false)
 
     const location = useLocation();
     const { search = "" } = queryString.parse(location.search);
 
-    //const filteredGames = collection;
-
+    
     const [formValues, handleInputChange] = useForm({
         searchCriterion: ''
     });
 
     const { searchCriterion } = formValues
 
-    const filteredGames = useMemo(() => getGamesBySearch(search, collection), [search])
-
-    const navigate = useNavigate();
-
     const handleSearch = (e) => {
         e.preventDefault();
         console.log(searchCriterion)
-        navigate(`?search=${searchCriterion}`);
+        setSearchState(true)
     }
 
     return (
@@ -59,7 +52,6 @@ export const SearchCollection = () => {
                 <div className="col-7">
                     <h4>Result</h4>
                     <br />
-
                     {
                         (search === '')
                         &&
@@ -67,25 +59,9 @@ export const SearchCollection = () => {
                             Please type the search parameters
                         </div>
                     }
-                    {
-                        (search !== '' && filteredGames.length === 0)
-                        &&
-                        <div className="alert alert-danger">
-                            Game does not exist: {search}
-                        </div>
-                    }
-
-                    {//Recorremos el resultado de la búsqueda de los juegos.
-                        filteredGames.map(game => {
-                            return <GameResult
-                                key={game}
-                                gameID={game.id}
-                            >
-
-                            </GameResult>
-                        })
-                    }
+    
                 </div>
+                <GameCollection searchCriterion = {searchCriterion} searchState = {searchState} />
             </div>
         </>)
 }

@@ -84,9 +84,7 @@ export const GameCollectionApp = () => {
 
      
             <div className = "d-flex flex-row">
-                        <GameCollection gameCollection={videogameState}></GameCollection>
                         <GameResult gameID = {gameID} handleDeleteGame={handleDeleteGame} dispatch = {dispatch} searchState={searchState} setSearchState = {setSearchState}></GameResult>
-                        
              </div>
             </ol>
                 

@@ -13,11 +13,12 @@ export const GameResult = ({gameID, handleDeleteGame, dispatch, searchState, set
 
     const addGameToUserCollection = async(game, loggedUsername) => {
 
+
         let options = {
             method: "POST",
             headers: {"Content-Type": "application/json;charset=utf-8"},
             url: 'http://localhost:8585/games/addGameToUserCollection',
-            body: JSON.stringify({providedUsername: loggedUsername, game: `${game}`})
+            body: JSON.stringify({providedUsername: loggedUsername, game: game})
         }
         await fetch('http://localhost:8585/games/addGameToUserCollection', options)
         return 
@@ -37,13 +38,13 @@ export const GameResult = ({gameID, handleDeleteGame, dispatch, searchState, set
         game.image = info.background_image 
         game.rating = info.rating
         game.metacritic = info.metacritic
+        game.platform= info.platforms[0].platform.name
         console.log(`I found a ${JSON.stringify(game)}`)
     }
 
 
     useEffect(() => {
-
-        if(Object.keys(game).length > 0){
+        if(Object.keys(game).length > 0 && game.id !== 251509){
             let action ={
                 type: "add", 
                 payload: game

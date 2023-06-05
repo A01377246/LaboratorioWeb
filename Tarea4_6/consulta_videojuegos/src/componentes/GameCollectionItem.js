@@ -3,7 +3,6 @@ import { Fragment } from "react"
 
 export const GameCollectionItem = ({Game: {name, image, rating, metacritic}, gameID, handleDeleteGame}) => { 
 
-
     const handleDelete = (e) =>{
         handleDeleteGame(gameID)
         console.log("Remove clicked, key:", gameID)

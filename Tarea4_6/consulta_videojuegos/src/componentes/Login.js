@@ -10,11 +10,9 @@ export const LoginScreen = () => {
 
     const checkIfUserExists = async(username) =>{
        
-        let response = await fetch(`http://localhost:8585/games/checkIfUserExists/${username}`)
+        let response = await fetch(`http://localhost:8585/games/checkIfUserExists/${username}`) 
         let {userExists} = await response.json()
-
         return userExists
-
     }
 
 
