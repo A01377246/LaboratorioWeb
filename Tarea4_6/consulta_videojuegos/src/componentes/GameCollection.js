@@ -25,12 +25,12 @@ export const GameCollection = ({searchCriterion, searchState}) =>{
 
             console.log(`I will fetch from http://localhost:8585/games/getGameByUsernameAndGameName/${loggedUsername}/${searchCriterion}`)
           
-            let response = await fetch(`http://localhost:8585/games/getGameByUsernameAndGameName/${loggedUsername}/${searchCriterion.trim()}`)
-            let {collection} = await response.json()
-            console.log(collection)
+            let response = await fetch(`http://localhost:8585/games/getGameByUsernameAndGameName/${loggedUsername}/${searchCriterion}`)
+            let game = await response.json()
+            console.log(game)
 
-            if(collection){
-                setGameCollection(collection)
+            if(game){
+                setGameCollection(game)
             }else{
                 alert('wtf is that mate')
             }
@@ -43,9 +43,9 @@ export const GameCollection = ({searchCriterion, searchState}) =>{
         }else{
             getGameCollection()
         } 
+
     }, [loggedUsername, searchCriterion, searchState])
 
-    //console.log(`Da game Collection ${gameCollection}`)
      return(
             <div className = "d-flex flex-row">
             {
